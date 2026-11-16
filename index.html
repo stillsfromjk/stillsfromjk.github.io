@@ -142,9 +142,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;op
 
 /* ---------- about ---------- */
 .about{padding-block:clamp(90px,14vw,190px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,7vw,120px);align-items:start}
-.about figure{position:sticky;top:100px}
-.about figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.about figure figcaption{font-size:13px;color:var(--ash);margin-top:12px}
+.about-intro{position:sticky;top:100px}
 .about .lead{font-family:var(--serif);font-size:clamp(26px,3vw,40px);line-height:1.22;letter-spacing:-.01em;margin:24px 0 32px;max-width:24ch}
 .about p.body{color:#c9bfb2;max-width:60ch;margin-bottom:1.1em;line-height:1.8}
 .process{list-style:none;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--line);counter-reset:s}
@@ -152,7 +150,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;op
 .process li::before{content:counter(s,decimal-leading-zero);font-family:var(--serif);font-style:italic;color:var(--ash)}
 .process b{font-weight:400;display:block;font-family:var(--serif);font-size:24px;margin-bottom:4px}
 .process span{color:var(--ash);font-size:15px}
-@media(max-width:860px){.about{grid-template-columns:1fr}.about figure{position:static}}
+@media(max-width:860px){.about{grid-template-columns:1fr;row-gap:0}.about-intro{position:static}}
 
 /* ---------- contact ---------- */
 .contact{padding-block:clamp(90px,14vw,180px) 60px;border-top:1px solid var(--line)}
@@ -254,13 +252,11 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
   </section>
 
   <section class="about wrap" id="about" aria-label="About">
-    <figure>
-      <img src="images/PORTRAITS/portraits-02.jpg" alt="Silhouette portrait photographed by Joseph King" loading="lazy">
-      <figcaption>From a portrait session</figcaption>
-    </figure>
-    <div>
+    <div class="about-intro">
       <h2 class="section-title">About</h2>
       <p class="lead">Hi, I’m Joseph, a photographer and visual storyteller based in Calabar, Nigeria.</p>
+    </div>
+    <div>
       <p class="body">For more than half a decade, I’ve been capturing events, portraits, weddings and lifestyle moments, and I’m now growing into product photography.</p>
       <p class="body">I believe a good photo does more than look nice. It makes you feel something and remember it. That’s why I focus on real moments, natural expressions and clean, well lit images that tell a story at a glance.</p>
       <p class="body">Across every kind of shoot, the aim stays the same: honest, carefully made images that hold their meaning long after the moment has passed.</p>
