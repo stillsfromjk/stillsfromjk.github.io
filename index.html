@@ -7,8 +7,8 @@
 <meta name="description" content="Joseph King is a photographer and visual storyteller based in Calabar, Nigeria, photographing weddings, portraits, events, fashion and products.">
 <meta property="og:title" content="Joseph King Photography">
 <meta property="og:description" content="Honest, carefully made images that hold their meaning long after the moment has passed. Calabar, Nigeria.">
-<meta property="og:image" content="https://jkphotography.github.io/images/hero.jpg">
-<meta property="og:url" content="https://jkphotography.github.io/">
+<meta property="og:image" content="https://stillsfromjk.github.io/images/hero.jpg">
+<meta property="og:url" content="https://stillsfromjk.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1c1714">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
   --ivory:#ede6da;      /* print paper */
   --ash:#9c8f80;        /* secondary text */
   --line:#3a322c;       /* rules */
-  --safelight:#b3261e;  /* darkroom safelight, used sparingly */
+  --safelight:#e0241b;  /* JK logo red, used sparingly */
   --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans:"Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --gutter:clamp(20px,4vw,64px);
@@ -46,7 +46,13 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:200
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px var(--gutter);transition:background .5s,padding .5s}
 .nav.solid{background:rgba(28,23,20,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-block:14px}
-.mark{font-family:var(--serif);font-size:22px;letter-spacing:.02em}
+.mark{font-family:var(--serif);font-size:22px;letter-spacing:.02em;display:flex;align-items:center;gap:12px}
+.jk{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.04em;padding:5px 7px;line-height:1;
+  --c:var(--safelight);background:
+  linear-gradient(var(--c),var(--c)) top left/7px 1.5px,linear-gradient(var(--c),var(--c)) top left/1.5px 7px,
+  linear-gradient(var(--c),var(--c)) top right/7px 1.5px,linear-gradient(var(--c),var(--c)) top right/1.5px 7px,
+  linear-gradient(var(--c),var(--c)) bottom left/7px 1.5px,linear-gradient(var(--c),var(--c)) bottom left/1.5px 7px,
+  linear-gradient(var(--c),var(--c)) bottom right/7px 1.5px,linear-gradient(var(--c),var(--c)) bottom right/1.5px 7px;background-repeat:no-repeat}
 .mark i{font-style:italic}
 .nav ul{display:flex;gap:clamp(18px,3vw,40px);list-style:none;font-size:14px;letter-spacing:.04em}
 .nav ul a{opacity:.75;transition:opacity .3s}
@@ -58,7 +64,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:200
 /* ---------- hero: the shutter ---------- */
 .hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#000}
 .hero-img{position:absolute;inset:0;clip-path:inset(49.6% 0 49.6% 0);transition:clip-path 1.6s var(--ease)}
-.hero-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 3.2s var(--ease)}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:66% 35%;transform:scale(1.18);transition:transform 3.2s var(--ease)}
 .hero.open .hero-img{clip-path:inset(0 0 0 0)}
 .hero.open .hero-img img{transform:scale(1.04)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(28,23,20,.92) 100%);opacity:0;transition:opacity 1.2s .9s}
@@ -105,6 +111,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:200
 .tile figcaption{position:absolute;left:16px;bottom:12px;font-size:13px;opacity:0;transform:translateY(6px);transition:.4s}
 .tile:hover figcaption,.tile:focus-visible figcaption{opacity:1;transform:none}
 .tile.hide{display:none}
+@media(max-width:600px){.grid{columns:2}}
 @media(hover:none){.grid:hover .tile img.ready{filter:none}}
 
 /* ---------- disciplines ---------- */
@@ -201,7 +208,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
 <body>
 
 <nav class="nav" id="nav" aria-label="Main">
-  <a href="#top" class="mark">Joseph <i>King</i></a>
+  <a href="#top" class="mark"><span class="jk" aria-hidden="true">JK</span><span>Joseph <i>King</i></span></a>
   <ul>
     <li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
@@ -246,8 +253,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;paddin
 
   <section class="about wrap" id="about" aria-label="About">
     <figure>
-      <img src="images/PORTRAITS/portraits-01.jpg" alt="Portrait photographed by Joseph King" loading="lazy">
-      <figcaption>Portrait session, Calabar</figcaption>
+      <img src="images/PORTRAITS/portraits-02.jpg" alt="Silhouette portrait photographed by Joseph King" loading="lazy">
+      <figcaption>From a portrait session</figcaption>
     </figure>
     <div>
       <h2 class="section-title">About</h2>
@@ -329,26 +336,28 @@ const CATS = {};
 Object.keys(FILES).forEach(k => CATS[k] = {name:k[0].toUpperCase()+k.slice(1), files:FILES[k].length});
 const src = (c,i) => `images/${c.toUpperCase()}/${encodeURIComponent(FILES[c][i-1])}`;
 
-/* curated "All" order: interleave categories so the grid reads like an edit, not a dump */
-const order = ["weddings","portraits","fashion","events","products"];
-const photos = [];
-for (let i=1;i<=6;i++) order.forEach(c => { if (i<=CATS[c].files) photos.push({c, src:src(c,i), alt:`${CATS[c].name} photograph by Joseph King`}); });
+/* curated order for "All": strongest frames first, categories mixed like an edit */
+const ORDER = [["weddings",1],["portraits",3],["fashion",1],["events",3],["products",3],["weddings",2],["fashion",6],["portraits",2],
+  ["weddings",6],["events",1],["products",1],["portraits",6],["weddings",5],["fashion",3],["events",4],["portraits",4],
+  ["weddings",4],["products",6],["fashion",4],["portraits",5],["events",5],["fashion",5],["weddings",3],["products",2],
+  ["portraits",1],["events",6],["fashion",2],["products",4],["products",5],["events",2]];
+const photos = ORDER.map(([c,i]) => ({c, src:src(c,i), alt:`${CATS[c].name} photograph by Joseph King`}));
 
 const SERVICES = [
   {key:"weddings", title:"Weddings", tag:"Preparation to the last dance", img:src("weddings",1), body:[
     "A wedding day passes quickly, but the photographs last. My goal is to capture the full story of your day: the nervous smiles, the happy tears, the laughter and the small moments that are easy to miss.",
     "I blend into the background so people stay natural, and I step in only for the formal portraits. I cover preparation, the ceremony, couple portraits, family groups, the reception and the details planned over months.",
     "Every image is edited for warm, true to life colour, so the gallery feels like your day and not a passing trend."]},
-  {key:"portraits", title:"Portraits", tag:"Headshots, personal brand, couples and families", img:src("portraits",2), body:[
+  {key:"portraits", title:"Portraits", tag:"Headshots, personal brand, couples and families", img:src("portraits",3), body:[
     "A great portrait should look like you on your best day. I photograph individuals, professionals, couples and families, with a relaxed approach that helps you feel comfortable in front of the camera.",
     "Before we shoot, we talk about what the portraits are for. During the session I guide your poses and expressions, so you never feel stiff or awkward. Each image is then edited for clean skin tones, natural colour and a polished finish."]},
-  {key:"events", title:"Events", tag:"Corporate, launches, NGOs and celebrations", img:src("events",1), body:[
+  {key:"events", title:"Events", tag:"Corporate, launches, NGOs and celebrations", img:src("events",3), body:[
     "Events are my specialty. I know how fast they move and how quickly the best moments disappear, so I stay alert, move quietly and capture them as they happen.",
     "I cover corporate events, conferences, launches, birthdays, community programs and NGO activities, documented so the photos can be used straight away for social media, reports and storytelling. You get a balanced mix of wide shots, candid moments and detail shots, all edited consistently."]},
-  {key:"fashion", title:"Fashion", tag:"Editorials, campaigns and lookbooks", img:src("fashion",1), body:[
+  {key:"fashion", title:"Fashion", tag:"Editorials, campaigns and lookbooks", img:src("fashion",3), body:[
     "My fashion work combines editorial storytelling, expressive movement, thoughtful styling and cinematic light to create images that communicate a strong point of view.",
     "For designers, brands, campaigns and lookbooks."]},
-  {key:"products", title:"Products", tag:"Ecommerce, food, beauty and campaigns", img:src("products",1), body:[
+  {key:"products", title:"Products", tag:"Ecommerce, food, beauty and campaigns", img:src("products",3), body:[
     "Good products deserve images that show them clearly and make people want a closer look. I create clean, bright, well styled product photos for small businesses, online stores, food and drink brands, fashion and beauty products, and social media campaigns.",
     "Clear lighting shows true colour and texture. Simple backgrounds keep attention on the product. Consistent styling gives a brand a professional look across its website and social pages."]}
 ];

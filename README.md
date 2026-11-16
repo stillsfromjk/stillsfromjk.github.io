@@ -1,6 +1,6 @@
 # Joseph King Photography
 
-Live at https://jkphotography.github.io
+Live at https://stillsfromjk.github.io
 
 ## Folder layout
 
@@ -28,4 +28,4 @@ To add or rename photos, edit the `FILES` list near the top of the script in `in
 ## Moving to a custom domain later
 
 Repo Settings, then Pages, then Custom domain. Enter the domain and add the DNS records GitHub shows.
-Then update the two `jkphotography.github.io` links in the `<head>` of `index.html`.
+Then update the two `stillsfromjk.github.io` links in the `<head>` of `index.html`.
